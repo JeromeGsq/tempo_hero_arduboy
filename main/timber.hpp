@@ -3,42 +3,15 @@
 #define TIMBER_H
 
 #include <Arduboy2.h>
+#include "entity.hpp"
 
-#define ANIMATION_FRAME_DURATION 60
-#define MOVEMENT_RECOVER 30
-
-enum Movement { up, back, down, idle, attack };
-
-class Timber
+class Timber : public Entity
 {
-  private: 
-    byte _baseX;
-    byte _baseY;
-    byte _x;
-    byte _y;
-
-    byte _life;
-    byte _strength;
-    Movement _state;
-
-    byte _anim;
-    byte _movementAnim;
-
-    byte _sprite;
-
 public:
-    Timber(byte basePositionX, byte basePositionY);
-    
-    byte X();
-    byte Y();
+    Timber(byte basePositionX, byte basePositionY, byte life, byte strength);
 
-    byte Life();
-    byte Strength();
-
-    bool Sprite();
     void Update();
-    void UpdateState(Movement state);
-    void TakeDamage(byte damage);
+    void UpdateState(Movement movement);
 };
 
 unsigned char const timber1[] PROGMEM =
@@ -94,5 +67,4 @@ unsigned char const timber2[] PROGMEM =
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 
 };
-
 #endif

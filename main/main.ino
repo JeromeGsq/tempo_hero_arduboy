@@ -6,9 +6,9 @@ using namespace std;
 Arduboy2 ab;
 Tinyfont tf = Tinyfont(ab.sBuffer, 128, 64);
 
-#include "gameManager.h"
-#include "timber.h"
-#include "enemy.h"
+#include "gameManager.hpp"
+#include "timber.hpp"
+#include "enemy.hpp"
 
 void setup()
 {
@@ -33,18 +33,16 @@ void loop()
   ab.display();
 }
 
-GameManager gameManager;
-
 void start()
 {
 }
 
 void run()
 {
-  gameManager.Update(ab);
+  GameManager::get()->Update(ab);
 }
 
 void display()
 {
-  gameManager.Display(ab, tf);
+  GameManager::get()->Display(ab, tf);
 }

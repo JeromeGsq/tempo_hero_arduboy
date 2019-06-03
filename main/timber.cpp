@@ -1,54 +1,13 @@
-#include "timber.h"
-#include "gameManager.h"
+#include "timber.hpp"
+#include "gameManager.hpp"
 
-Timber::Timber(byte basePositionX, byte basePositionY)
+Timber::Timber(byte basePositionX, byte basePositionY, byte life, byte strength) : Entity(basePositionX, basePositionY, life, strength)
 {
-  _baseX = basePositionX;
-  _baseY = basePositionY;
-  _x = basePositionX;
-  _y = basePositionY;
-
-  _life = 100;
-  _strength = 56;
-  _state = idle;
-
-  _anim = 0;
-  _movementAnim = 0;
-
-  _sprite = 0;
-}
-
-byte Timber::X()
-{
-  return _x;
-}
-
-byte Timber::Y()
-{
-  return _y;
-}
-
-byte Timber::Life()
-{
-  return _life;
-}
-
-byte Timber::Strength()
-{
-  return _strength;
-}
-
-bool Timber::Sprite()
-{
-  return _anim >= 30;
 }
 
 void Timber::Update()
 {
-  // Sprite anim
-  _anim = ++_anim;
-  if (_anim >= ANIMATION_FRAME_DURATION)
-    _anim = 0;
+  Entity::Update();
 
   // Movement anim
   if (_state != idle)
@@ -93,12 +52,7 @@ void Timber::UpdateState(Movement state)
   case attack:
     _x = _baseX + 30;
     _y = _baseY;
-    GameManager& ptr = GameManager::Instance();
-    ptr.MakeDamage(_strength);
+    GameManager::get()->MakeDamage(_strength, entityEnemy);
     break;
   }
-}
-
-void Timber::TakeDamage(byte damage){
-  _life -= damage;
 }

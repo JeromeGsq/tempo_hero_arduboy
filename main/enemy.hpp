@@ -3,28 +3,12 @@
 #define ENEMY_H
 
 #include <Arduboy2.h>
+#include "entity.hpp"
 
-class Enemy
+class Enemy : public Entity
 {
-    byte _baseX; 
-    byte _baseY;
-    byte _x;
-    byte _y;
-    byte _life; 
-    byte _anim;
-    byte _sprite;
-    byte _state;
-
-public:
-    Enemy(byte basePositionX, byte basePositionY);
-    
-    byte X();
-    byte Y();
-    byte Life();
-    bool Sprite();
-    void UpdateSprite();
-    void UpdateState(byte state);
-    void TakeDamage(byte damage);
+  public:
+    Enemy(byte basePositionX, byte basePositionY, byte life, byte strength);
 };
 
 unsigned char const mushroom1[] PROGMEM =
@@ -100,6 +84,4 @@ unsigned char const mushroom2[] PROGMEM =
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 
 };
-
-
 #endif
