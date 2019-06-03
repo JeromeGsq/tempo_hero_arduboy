@@ -4,8 +4,8 @@
 
 #include <Arduboy2.h>
 
-#define ANIMATION_FRAME_DURATION 60
-#define MOVEMENT_RECOVER 30
+#define ANIMATION_FRAME_DURATION 40
+#define MOVEMENT_RECOVER 45
 
 enum Movement
 {
@@ -41,6 +41,9 @@ public:
 
     byte Life();
     byte Strength();
+
+    byte Anim();
+    byte MovementAnim();
 
     bool Sprite();
 

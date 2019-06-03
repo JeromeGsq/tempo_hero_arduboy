@@ -39,11 +39,11 @@ void Timber::UpdateState(Movement state)
     break;
   case up:
     _x = _baseX;
-    _y = 0;
+    _y = _baseY-14;
     break;
   case down:
     _x = _baseX;
-    _y = 32;
+    _y = _baseY+14;
     break;
   case idle:
     _x = _baseX;
@@ -52,6 +52,8 @@ void Timber::UpdateState(Movement state)
   case attack:
     _x = _baseX + 30;
     _y = _baseY;
+    
+    // Apply damage to enemy
     GameManager::get()->MakeDamage(_strength, entityEnemy);
     break;
   }

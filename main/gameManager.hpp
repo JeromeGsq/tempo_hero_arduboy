@@ -5,6 +5,12 @@
 #include <Arduboy2.h>
 #include "Tinyfont.h"
 
+#define CHAR_LENGHT 5
+
+#define ACTION_BAR_POSX 0
+#define ACTION_BAR_LENGTH 30
+#define ACTION_BAR_HEIGHT 13
+
 #include "timber.hpp"
 #include "enemy.hpp"
 

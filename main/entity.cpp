@@ -32,9 +32,19 @@ byte Entity::Life()
   return _life;
 }
 
+byte Entity::Anim()
+{
+  return _anim;
+}
+
+byte Entity::MovementAnim()
+{
+  return _movementAnim;
+}
+
 bool Entity::Sprite()
 {
-  return _anim >= ANIMATION_FRAME_DURATION;
+  return _anim >= ANIMATION_FRAME_DURATION/2;
 }
 
 void Entity::TakeDamage(byte damage)
@@ -48,8 +58,4 @@ void Entity::Update()
   _anim = ++_anim;
   if (_anim >= ANIMATION_FRAME_DURATION)
     _anim = 0;
-};
-
-void Entity::UpdateState(Movement state)
-{
 };
